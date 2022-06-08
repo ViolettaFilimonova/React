@@ -6,12 +6,18 @@ import './styles/App.css'
 import PostItem from "./components/PostItem";
 
 function App() {
-    const [value, setValue] = useState('Text in input')
-  return (
-    <div className="App">
-        <PostItem post={{id: 1, title: 'Javascript', text: 'Javascript - язык программирования'}}/>
-    </div>
-  );
+    const [posts, setPosts] = useState([
+        {id: 1, title: 'Javascript', text: 'Javascript - язык программирования'},
+        {id: 2, title: 'Python', text: 'JPython - язык программирования'},
+        {id: 3, title: 'C++', text: 'C++ - язык программирования'}
+        ])
+    return (
+        <div className="App">
+            {posts.map(post =>
+                <PostItem post={post} key={post.id}/>
+            )}
+        </div>
+    );
 }
 
 export default App;
