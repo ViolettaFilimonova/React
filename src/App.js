@@ -1,9 +1,9 @@
 import React from "react";
 import {useState} from "react";
 import Counter from "./components/Counter";
+import ClassCounter from "./components/ClassCounter";
 
 function App() {
-    const [likes, setLikes] = useState(0)
     const [value, setValue] = useState('Text in input')
   return (
     <div className="App">
@@ -14,7 +14,7 @@ function App() {
             value={value}
             onChange={event => setValue(event.target.value)}
         />
-        <Counter/>
+        <ClassCounter/>
     </div>
   );
 }
