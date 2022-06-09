@@ -14,12 +14,21 @@ function App() {
         {id: 2, title: 'Python', text: 'JPython - язык программирования'},
         {id: 3, title: 'C++', text: 'C++ - язык программирования'}
         ])
+    const [title, setTitle] = useState('fghjk')
+    const addNewPost = () => {
+
+    }
     return (
         <div className="App">
             <form >
-                <MyInput type="text" placeholder='Название поста'/>
-                <MyInput type="text" placeholder='Описание поста'/>
-                <MyButton >Создать</MyButton>
+                <MyInput
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
+                    type="text"
+                    placeholder='Название поста'
+                />
+                <MyInput  type="text" placeholder='Описание поста'/>
+                <MyButton onClick={addNewPost}>Создать</MyButton>
             </form>
             <PostList posts={posts} title={'Список постов 1'}/>
 
