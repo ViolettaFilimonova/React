@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import {useState} from "react";
 import Counter from "./components/Counter";
 import ClassCounter from "./components/ClassCounter";
@@ -14,9 +14,12 @@ function App() {
         {id: 2, title: 'Python', text: 'JPython - язык программирования'},
         {id: 3, title: 'C++', text: 'C++ - язык программирования'}
         ])
-    const [title, setTitle] = useState('fghjk')
-    const addNewPost = () => {
-
+    const [title, setTitle] = useState('')
+    const bodyInputRef = useRef()
+    const addNewPost = (e) => {
+        e.preventDefault()
+        console.log(bodyInputRef.current.value)
+        console.log(title)
     }
     return (
         <div className="App">
@@ -27,8 +30,11 @@ function App() {
                     type="text"
                     placeholder='Название поста'
                 />
-                <MyInput  type="text" placeholder='Описание поста'/>
-                <MyButton onClick={addNewPost}>Создать</MyButton>
+                <MyInput
+                    ref={bodyInputRef}
+                    type="text"
+                    placeholder='Описание поста'/>
+                <MyButton type='submit' onClick={addNewPost}>Создать</MyButton>
             </form>
             <PostList posts={posts} title={'Список постов 1'}/>
 
